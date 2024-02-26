@@ -16,7 +16,7 @@ class Product(models.Model):
     category = models.CharField(max_length=255, choices=CATEGORY_CHOICES)
     cost_price = models.FloatField(null=True)
     selling_price = models.FloatField(null=True)
-    expiry_date = models.DateField()
+    expiry_date = models.TimeField()
     objects = models.Manager()   
 
     class Meta:

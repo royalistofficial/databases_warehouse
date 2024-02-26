@@ -1,0 +1,59 @@
+/* Reset CSS для сброса стандартных стилей */
+body, h1, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif; /* Шрифт */
+    background-color: #f0f0f0; /* Цвет фона */
+}
+
+.container {
+    width: 80%; /* Ширина контейнера */
+    margin: 0 auto; /* Выравнивание по центру */
+}
+
+header {
+    background-color: #333; /* Цвет фона заголовка */
+    color: #fff; /* Цвет текста */
+    padding: 20px; /* Внутренние отступы */
+}
+
+header h1 {
+    font-size: 24px; /* Размер шрифта заголовка */
+}
+
+nav {
+    background-color: #666; /* Цвет фона навигации */
+}
+
+nav ul {
+    list-style-type: none; /* Убираем маркеры у списка */
+    padding: 10px; /* Внутренние отступы списка */
+}
+
+nav ul li {
+    display: inline; /* Размещаем пункты горизонтально */
+    margin-right: 20px; /* Внешние отступы между пунктами */
+}
+
+nav ul li a {
+    color: #fff; /* Цвет текста ссылок */
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+nav ul li a:hover {
+    text-decoration: underline; /* Подчеркиваем ссылку при наведении */
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333; /* Цвет фона подвала */
+    color: #fff; /* Цвет текста подвала */
+    text-align: center; /* Выравнивание текста по центру */
+    padding: 10px; /* Внутренние отступы подвала */
+}
