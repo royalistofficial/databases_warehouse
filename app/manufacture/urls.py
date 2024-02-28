@@ -16,13 +16,10 @@ Including another URLconf
 """
 
 from django.urls import path
-from warehouse import views
+from manufacture import views
 
-app_name = 'warehouse'
+app_name = 'manufacture'
 
 urlpatterns = [
-    path('',views.index, name='index'),
-    path('add_product/', views.add_product, name='add_product'),
-    path('add_product/add_product_good/', views.add_product, name='add_product_gopd'),
-     
+    path('',views.index, name='index'),     
 ]
