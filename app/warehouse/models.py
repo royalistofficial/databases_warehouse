@@ -21,6 +21,7 @@ class Product(models.Model):
 
     class Meta:
         db_table = 'product'
+    
 
 class Warehouse(models.Model):
     warehouse_id = models.AutoField(primary_key=True)

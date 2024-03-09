@@ -21,5 +21,6 @@ from manufacture import views
 app_name = 'manufacture'
 
 urlpatterns = [
-    path('',views.index, name='index'),     
+    path('',views.index, name='index'),  
+    path('addrecip', views.add_recip, name='add_recip'),
 ]

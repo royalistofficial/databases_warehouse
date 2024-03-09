@@ -25,23 +25,28 @@ def index(request):
             expiration_date[WarPro.warehouseproducts_id] = WarPro.production_date + related_product.expiry_date
         else:
             expiration_date[WarPro.warehouseproducts_id] = None
-    prints_warehouse = []
-    for warehouse in warehouses:
-        print_warehouse = [[],[],[]]
-        print_warehouse[0] = warehouse.category
-        print_warehouse[1] = warehouse.max_warehouse_capacity
-        print_warehouse[2] = warehouse.max_warehouse_capacity
-        for warehouseProduct in warehouseProducts:
-            for product in products:
-                if warehouseProduct.product_id == product.product_id:
-                    if product.category == warehouse.category:
-                        print_warehouse[2] -= warehouseProduct.quantity
-        prints_warehouse.append(print_warehouse)
-    return render(request, 'warehouse/index.html', 
-                    {'products': products, 
-                    'warehouse': prints_warehouse, 
-                    'warehouseProducts': warehouses,})
 
+    updated_warehouses = []
+    updated_warehouse_products = []
+    for warehouse in warehouses:
+        updated_warehous = [warehouse.category, warehouse.max_warehouse_capacity, warehouse.max_warehouse_capacity]
+        for warehouseProduct in warehouseProducts:
+            product = Product.objects.get(product_id=int(warehouseProduct.product_id))
+            if product.category == warehouse.category:
+                updated_warehous[2] -= warehouseProduct.quantity
+
+        updated_warehouses.append(updated_warehous)
+    for warehouseProduct in warehouseProducts:
+        product = Product.objects.get(product_id=int(warehouseProduct.product_id))
+        updated_warehouse_product = [product.Name,warehouseProduct.quantity,warehouseProduct.production_date,warehouseProduct.production_date + product.expiry_date]
+        updated_warehouse_products.append(updated_warehouse_product)
+
+
+    outputDictionary = {}
+    outputDictionary['products'] = products
+    outputDictionary['warehouse'] = updated_warehouses
+    outputDictionary['warehouseProducts'] = updated_warehouse_products
+    return render(request, 'warehouse/index.html', outputDictionary)
 
 def add_product(request):
     if request.method == 'POST':
@@ -52,11 +57,14 @@ def add_product(request):
             selling_price = float(request.POST.get('selling_price'))
             expiry_time = request.POST.get('expiry_time')+ ' days'
             new_product = Product(Name=name, category=category, cost_price=cost_price, selling_price=selling_price, expiry_date=expiry_time)
+            product = Product.objects.filter(Name=name).first()
+            if product:
+                return render(request, 'warehouse/add_product.html', {'error_message': "Продукт с таким именем уже существует"})
             new_product.full_clean()
             new_product.save()
-            return index(request)
+            return  render(request, 'main/success.html')
         except Exception as e:
-            # Обработка других неожиданных ошибок
-            return HttpResponse(f'Произошла ошибка: {e} ')
+            render(request, 'warehouse/add_product.html', {'error_message': e})
+        return render(request, 'warehouse/add_product.html')   
     else:
         return render(request, 'warehouse/add_product.html')

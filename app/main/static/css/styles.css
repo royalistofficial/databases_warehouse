@@ -103,7 +103,7 @@ a:hover {
 
 .userPanel {
     display: none;
-    background-color: #666;
+    background-color: #666666;
     padding: 10px;
     top: -10;
     right: 0;
@@ -122,7 +122,7 @@ a:hover {
     width: 300px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
     border-radius: 5px;
     background-color: #f9f9f9;
 }
@@ -144,7 +144,7 @@ a:hover {
 .logform button {
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
     border-radius: 5px;
     background-color: #4CAF50;
     color: white;
@@ -153,6 +153,48 @@ a:hover {
 }
 
 .logform button:hover {
-    background-color: #45a049;
+    background-color: #5dd163;
 }
 
+
+.main_table {
+    border-collapse: collapse;
+    border-left: 3px solid #666666;
+    border-right: 3px solid #666666;
+    border-bottom: 3px solid #666666;
+    font-family: "Lucida Grande", sans-serif;
+   }
+.main_table caption {
+    background: #666666; 
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px  4px 0 rgba(0,0,0,.3);
+    color: white;
+    font-family: "Roboto Slab",serif;
+    font-style: normal;
+    font-size: 26px;
+    text-align: center;
+    margin: 0;
+  }
+.main_table td, .main_table th {
+    padding: 10px;
+  }
+.main_table th {
+    text-align: left;
+    font-size: 18px;
+  }
+.main_table tr:nth-child(2n) {
+    background: #E5E5E5;
+  }
+.main_table td:last-of-type {
+    text-align: center;
+  }
+
+.main_table button {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #666666;
+    box-shadow: 2px 2px 0 0 #363636;
+    position: relative;
+}

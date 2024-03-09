@@ -51,6 +51,9 @@ def mylogout(request):
     logout(request) 
     return render(request, 'main/index.html') 
 
+def success(request):
+    return render(request, 'main/success.html') 
+
 def privateOffice(request):
     return render(request, 'users/privateOffice.html') 
 
